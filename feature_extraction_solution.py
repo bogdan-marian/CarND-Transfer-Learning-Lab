@@ -8,8 +8,8 @@ flags = tf.app.flags
 FLAGS = flags.FLAGS
 
 # command line flags
-flags.DEFINE_string('training_file', '', "Bottleneck features training file (.p)")
-flags.DEFINE_string('validation_file', '', "Bottleneck features validation file (.p)")
+flags.DEFINE_string('training_file', 'inception_traffic_100_bottleneck_features_train.p', "Bottleneck features training file (.p)")
+flags.DEFINE_string('validation_file', 'inception_traffic_bottleneck_features_validation.p', "Bottleneck features validation file (.p)")
 flags.DEFINE_integer('epochs', 50, "The number of epochs.")
 flags.DEFINE_integer('batch_size', 256, "The batch size.")
 
@@ -40,6 +40,7 @@ def load_bottleneck_data(training_file, validation_file):
 
 def main(_):
     # load bottleneck data
+    print (FLAGS.training_file)
     X_train, y_train, X_val, y_val = load_bottleneck_data(FLAGS.training_file, FLAGS.validation_file)
 
     print(X_train.shape, y_train.shape)
